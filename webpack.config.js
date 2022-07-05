@@ -1,5 +1,5 @@
 /* webpack.config.js
- * @ Cong Min
+ * @ fuyiyang
  */
 // const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,7 +14,7 @@ module.exports = {
         path: path.resolve(__dirname)
     },
     devServer: {
-        contentBase: path.resolve(__dirname)
+        static: path.resolve(__dirname)
     },
     plugins: [
         // new webpack.HotModuleReplacementPlugin(),
@@ -24,8 +24,12 @@ module.exports = {
             inject: 'head',
             minify: {
                 collapseWhitespace: true,
-                minifyJS: true,
-                minifyCSS: true
+                // keepClosingSlash: true,
+                // removeComments: true,
+                // removeRedundantAttributes: true,
+                // removeScriptTypeAttributes: true,
+                // removeStyleLinkTypeAttributes: true,
+                // useShortDoctype: true
             }
         })
     ],
@@ -41,7 +45,7 @@ module.exports = {
                     { loader: 'style-loader' },
                     { loader: 'css-loader' },
                     { loader: 'postcss-loader' },
-                    { loader: 'less-loader?compress' }
+                    { loader: 'less-loader' }
                 ]
             },
             {
@@ -57,7 +61,7 @@ module.exports = {
                     { // 压缩图片：https://github.com/tcoopman/image-webpack-loader
                         loader: 'image-webpack-loader',
                         options: {
-                            bypassOnDebug: true
+                            disable: true
                         }
                     }
                 ]
